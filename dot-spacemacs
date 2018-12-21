@@ -56,7 +56,8 @@ This function should only modify configuration layer settings."
               ibuffer-group-buffers-by 'projects)
      imenu-list
      lsp
-     markdown
+     (markdown :variables
+               markdown-live-preview-engine 'vmd)
      multiple-cursors
      neotree
      org

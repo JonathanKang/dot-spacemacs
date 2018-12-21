@@ -8,4 +8,8 @@
 - Setup other needed components by spacemacs
 
 ### Setup other tools
-To be written.
+#### markdown layer
+- install vmd using npm `npm install vmd -g`
+> To use vmd to preview markdown, use `, c P`
+- `dnf install discount`
+> so that we can preview it in the browser using `, c p`
