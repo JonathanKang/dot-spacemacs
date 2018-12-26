@@ -565,9 +565,8 @@ before packages are loaded."
   (require 'lsp-ui)
   (add-hook 'lsp-mode-hook 'lsp-ui-mode)
   (setq lsp-ui-sideline-enable nil)
-  ;;(setq lsp-ui-peek-enable nil)
   (setq lsp-ui-doc-include-signature nil)
-  (setq lsp-ui-sideline-show-symbol nil)
+  (setq lsp-ui-sideline-show-hover nil)
   ;; lsp-ui-flycheck
   (require 'lsp-ui-flycheck)
   (with-eval-after-load 'lsp-mode
