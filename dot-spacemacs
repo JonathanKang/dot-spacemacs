@@ -529,6 +529,7 @@ before packages are loaded."
   ;; indentation related configuration
   (setq tab-with 4)
   (setq c-basic-offset 4)
+  (add-to-list 'spacemacs-indent-sensitive-modes 'c-mode)
 
   ;; dtrt indent
   (require 'dtrt-indent)
