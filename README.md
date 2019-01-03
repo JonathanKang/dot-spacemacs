@@ -13,3 +13,6 @@
 > To use vmd to preview markdown, use `, c P`
 - `dnf install discount`
 > so that we can preview it in the browser using `, c p`
+
+#### ccls as lsp server
+- [Install ccls](https://github.com/MaskRay/ccls/wiki/Getting-started)
