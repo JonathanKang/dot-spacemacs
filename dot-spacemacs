@@ -720,6 +720,15 @@ before packages are loaded."
   (add-hook 'nxml-mode-hook
             (lambda ()
               (define-key evil-normal-state-map (kbd "M-h") (ignore-error-wrapper 'windmove-left))))
+  ;; Fix M-h/j/k/l keybings in markdown-mode overriding windmove ones
+  ;; We can still use M-up/down/left/right for markdown promote/demote
+  (defun markdown-key-rebind ()
+    (evil-define-key '(normal insert) markdown-mode-map
+      (kbd "M-h") 'windmove-left
+      (kbd "M-j") 'windmove-down
+      (kbd "M-k") 'windmove-up
+      (kbd "M-l") 'windmove-right))
+  (add-hook 'markdown-mode-hook #'markdown-key-rebind)
 
   ;; insert custom config above here :)
   )
