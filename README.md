@@ -1,6 +1,6 @@
-# This is mainly used for manage my personal .spacemacs file using version control.
+## This is mainly used for manage my personal .spacemacs file using version control.
 
-## How to Use This
+### How to Use This
 
 - `git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d` and switch to `develop` branch
 - `git clone git@github.com:JonathanKang/dot-spacemacs.git`
