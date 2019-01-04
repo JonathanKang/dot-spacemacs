@@ -732,6 +732,9 @@ before packages are loaded."
       (kbd "M-l") 'windmove-right))
   (add-hook 'markdown-mode-hook #'markdown-key-rebind)
 
+  ;; Let VC follow the symbolic link and visit the real file by default
+  (setq vc-follow-symlinks t)
+
   ;; insert custom config above here :)
   )
 
