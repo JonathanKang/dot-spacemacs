@@ -23,3 +23,6 @@
 
 #### ccls as lsp server
 - [Install ccls](https://github.com/MaskRay/ccls/wiki/Getting-started)
+
+#### Install some dependencies for python layer
+- `pip install --user importmagic epc`
