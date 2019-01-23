@@ -26,3 +26,7 @@
 
 #### Install some dependencies for python layer
 - `pip install --user importmagic epc`
+
+#### vala mode
+- Download vala-mode.el to the location that’s mentioned in `(add-to-list 'load-path "/kang/el/")`
+> `wget http://www.emacswiki.org/emacs/download/vala-mode.el /kang/el/vala-mode.el`
