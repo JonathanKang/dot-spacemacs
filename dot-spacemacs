@@ -746,6 +746,9 @@ before packages are loaded."
   (add-to-list 'file-coding-system-alist '("\\.vala$" . utf-8))
   (add-to-list 'file-coding-system-alist '("\\.vapi$" . utf-8))
 
+  ;; Display default layout name
+  (setq dotspacemacs-display-default-layout t)
+
   ;; insert custom config above here :)
   )
 
