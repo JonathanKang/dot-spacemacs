@@ -205,7 +205,7 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(zenburn
+   dotspacemacs-themes '(solarized-zenburn
                          spacemacs-dark
                          spacemacs-light)
 
@@ -465,18 +465,18 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
   (add-to-list 'auto-mode-alist '("\\.ui\\'" . xml-mode))
 
   ;; windmove related configuration
-  (defun ignore-error-wrapper (fn)
-    "Funtion return new function that ignore errors.
-   The function wraps a function with `ignore-errors' macro."
-    (lexical-let ((fn fn))
-      (lambda ()
-        (interactive)
-        (ignore-errors
-          (funcall fn)))))
-  (global-set-key (kbd "M-h") (ignore-error-wrapper 'windmove-left))
-  (global-set-key (kbd "M-l") (ignore-error-wrapper 'windmove-right)) ;;overrides downcase-word keybings
-  (global-set-key (kbd "M-k") (ignore-error-wrapper 'windmove-up))
-  (global-set-key (kbd "M-j") (ignore-error-wrapper 'windmove-down))
+  ;; (defun ignore-error-wrapper (fn)
+  ;;   "Funtion return new function that ignore errors.
+  ;;  The function wraps a function with `ignore-errors' macro."
+  ;;   (lexical-let ((fn fn))
+  ;;     (lambda ()
+  ;;       (interactive)
+  ;;       (ignore-errors
+  ;;         (funcall fn)))))
+  (global-set-key (kbd "M-h") 'windmove-left)
+  (global-set-key (kbd "M-l") 'windmove-right) ;;overrides downcase-word keybings
+  (global-set-key (kbd "M-k") 'windmove-up)
+  (global-set-key (kbd "M-j") 'windmove-down)
 
   ;; custom keybings
   (global-set-key (kbd "M-b") 'shell)
@@ -516,7 +516,7 @@ before packages are loaded."
      ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
   ;; indentation related configuration
-  (setq tab-with 4)
+  (setq tab-width 4)
   (setq c-basic-offset 4)
   (add-to-list 'spacemacs-indent-sensitive-modes 'c-mode)
 
@@ -743,12 +743,13 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (zenburn-theme writeroom-mode web-mode paradox orgit magit-svn lsp-ui helm-xref evil-nerd-commenter evil-magit dumb-jump doom-themes doom-modeline centered-cursor-mode ccls aggressive-indent ace-window ace-link counsel swiper ivy lsp-mode flycheck company helm multiple-cursors magit-popup magit transient with-editor lv alert pythonic haml-mode js2-mode all-the-icons powerline dash which-key hydra evil org-plus-contrib yasnippet-snippets yapfify xterm-color ws-butler winum web-beautify volatile-highlights vmd-mode visual-fill-column vi-tilde-fringe uuidgen use-package unfill typo treepy toc-org tagedit systemd symon string-inflection stickyfunc-enhance srefactor spinner spaceline-all-the-icons solarized-theme smeargle smart-tabs-mode smart-tab slim-mode shrink-path shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator overseer org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree nameless mwim multi-term move-text mmm-mode meson-mode markdown-toc magit-gitflow macrostep lsp-clangd lorem-ipsum log4e livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide importmagic impatient-mode ibuffer-projectile hungry-delete ht hl-todo highlight-parentheses highlight-numbers highlight-indentation highlight helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag graphql grandshell-theme goto-chg google-translate google-c-style golden-ratio gnuplot gntp gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy frames-only-mode font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav eldoc-eval editorconfig dotenv-mode disaster diminish diff-hl define-word cython-mode cquery counsel-projectile counsel-css company-web company-tern company-statistics company-lsp company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile afternoon-theme add-node-modules-path ace-jump-helm-line ac-ispell))))
+    (company-lsp posframe dap-mode lsp-treemacs bui treemacs pfuture zenburn-theme writeroom-mode web-mode paradox orgit magit-svn lsp-ui helm-xref evil-nerd-commenter evil-magit dumb-jump doom-themes doom-modeline centered-cursor-mode ccls aggressive-indent ace-window ace-link counsel swiper ivy lsp-mode flycheck company helm multiple-cursors magit-popup magit transient with-editor lv alert pythonic haml-mode js2-mode all-the-icons powerline dash which-key hydra evil org-plus-contrib yasnippet-snippets yapfify xterm-color ws-butler winum web-beautify volatile-highlights vmd-mode visual-fill-column vi-tilde-fringe uuidgen use-package unfill typo treepy toc-org tagedit systemd symon string-inflection stickyfunc-enhance srefactor spinner spaceline-all-the-icons solarized-theme smeargle smart-tabs-mode smart-tab slim-mode shrink-path shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator overseer org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree nameless mwim multi-term move-text mmm-mode meson-mode markdown-toc magit-gitflow macrostep lsp-clangd lorem-ipsum log4e livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide importmagic impatient-mode ibuffer-projectile hungry-delete ht hl-todo highlight-parentheses highlight-numbers highlight-indentation highlight helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag graphql grandshell-theme goto-chg google-translate google-c-style golden-ratio gnuplot gntp gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy frames-only-mode font-lock+ flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav eldoc-eval editorconfig dotenv-mode disaster diminish diff-hl define-word cython-mode cquery counsel-projectile counsel-css company-web company-tern company-statistics company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile afternoon-theme add-node-modules-path ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((class color) (min-colors 89)) (:foreground "#DCDCCC" :background "#3F3F3F"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 )
