@@ -533,7 +533,6 @@ before packages are loaded."
   ;; semantic related configuration
   (require 'semantic)
   (setq semantic-default-submodes (remove 'global-semantic-idle-summary-mode semantic-default-submodes))
-  (global-semantic-stickyfunc-mode)
   (semantic-mode)
   (defun et/semantic-remove-hooks ()
     (remove-hook 'completion-at-point-functions
@@ -687,6 +686,14 @@ before packages are loaded."
 
   ;; Display default layout name
   (setq dotspacemacs-display-default-layout t)
+
+  ;; LSP performance tuning
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (2 * 1024 1024)) ;; 2mb
+  (setq lsp-completion-provider :capf)
+  (setq lsp-idle-delay 0.500)
+  (setq lsp-enable-file-watchers nil)
+  (setq lsp-log-io nil)
 
   ;; insert custom config above here :)
   )
