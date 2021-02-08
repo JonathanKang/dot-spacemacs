@@ -63,7 +63,6 @@ This function should only modify configuration layer settings."
      org
      python
      shell
-     semantic
      spell-checking
      syntax-checking
      systemd
@@ -530,19 +529,6 @@ before packages are loaded."
   ;; lsp-ui-flycheck
   (require 'lsp-ui-flycheck)
 
-  ;; semantic related configuration
-  (require 'semantic)
-  (setq semantic-default-submodes (remove 'global-semantic-idle-summary-mode semantic-default-submodes))
-  (semantic-mode)
-  (defun et/semantic-remove-hooks ()
-    (remove-hook 'completion-at-point-functions
-                 'semantic-analyze-completion-at-point-function)
-    (remove-hook 'completion-at-point-functions
-                 'semantic-analyze-notc-completion-at-point-function)
-    (remove-hook 'completion-at-point-functions
-                 'semantic-analyze-nolongprefix-completion-at-point-function))
-  (add-hook 'semantic-mode-hook #'et/semantic-remove-hooks)
-
   ;; self-defined function to add space between function name and brackets
   (defun completion-improvement (command &rest ignored)
     (if (and (eq command 'post-completion)
@@ -564,7 +550,6 @@ before packages are loaded."
             (insert ?\ )))))
   (advice-add 'company-capf :after #'completion-improvement)
   (advice-add 'company-lsp :after #'completion-improvement)
-  (advice-add 'company-semantic :after #'completion-improvement)
 
   ;; html related settings
   (add-hook 'html-mode-hook
@@ -689,7 +674,7 @@ before packages are loaded."
 
   ;; LSP performance tuning
   (setq gc-cons-threshold 100000000)
-  (setq read-process-output-max (2 * 1024 1024)) ;; 2mb
+  (setq read-process-output-max (* 1024 1024))
   (setq lsp-completion-provider :capf)
   (setq lsp-idle-delay 0.500)
   (setq lsp-enable-file-watchers nil)
