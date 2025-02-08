@@ -80,7 +80,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(meson-mode)
+   dotspacemacs-additional-packages '(meson-mode doom-themes)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -204,9 +204,8 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(sanityinc-tomorrow-night
-                         spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(doom-one-light
+                         doom-one)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `doom', `vim-powerline' and `vanilla'. The
@@ -501,16 +500,19 @@ before packages are loaded."
 
   (xterm-mouse-mode -1)
 
+  ;; doom theme
+  (require 'doom-themes)
+
   (require 'company)
   ;; meson-mode support
   (add-hook 'meson-mode-hook 'company-mode)
 
   ;; Improved auto complete faces
-  (custom-set-faces
-   '(company-tooltip-common
-     ((t (:inherit company-tooltip :weight bold :underline nil))))
-   '(company-tooltip-common-selection
-     ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+  ;; (custom-set-faces
+  ;;  '(company-tooltip-common
+  ;;    ((t (:inherit company-tooltip :weight bold :underline nil))))
+  ;;  '(company-tooltip-common-selection
+  ;;    ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
 
   ;; indentation related configuration
   (setq tab-width 4)
@@ -708,10 +710,11 @@ This function is called at the very end of Spacemacs initialization."
  '(cua-overwrite-cursor-color "#F0DFAF")
  '(cua-read-only-cursor-color "#7F9F7F")
  '(custom-safe-themes
-   '("bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "d0fa4334234e97ece3d72d86e39a574f8256b4a8699a1fb5390c402892a1c024" "e47c0abe03e0484ddadf2ae57d32b0f29f0b2ddfe7ec810bd6d558765d9a6a6c" default))
+   '("5f128efd37c6a87cd4ad8e8b7f2afaba425425524a68133ac0efd87291d05874" "e1f4f0158cd5a01a9d96f1f7cdcca8d6724d7d33267623cc433fe1c196848554" "9f297216c88ca3f47e5f10f8bd884ab24ac5bc9d884f0f23589b0a46a608fe14" "f053f92735d6d238461da8512b9c071a5ce3b9d972501f7a5e6682a90bf29725" "f5f80dd6588e59cfc3ce2f11568ff8296717a938edd448a947f9823a4e282b66" "8d3ef5ff6273f2a552152c7febc40eabca26bae05bd12bc85062e2dc224cde9a" "e87fd8e24e82eb94d63b1a9c79abc8161d25de9f2f13b64014d3bf4b8db05e9a" "c5878086e65614424a84ad5c758b07e9edcf4c513e08a1c5b1533f313d1b17f1" "2721b06afaf1769ef63f942bf3e977f208f517b187f2526f0e57c1bd4a000350" "c8b3d9364302b16318e0f231981e94cbe4806cb5cde5732c3e5c3e05e1472434" "9e1cf0f16477d0da814691c1b9add22d7cb34e0bb3334db7822424a449d20078" "e14884c30d875c64f6a9cdd68fe87ef94385550cab4890182197b95d53a7cf40" "8b148cf8154d34917dfc794b5d0fe65f21e9155977a36a5985f89c09a9669aa0" "6f96a9ece5fdd0d3e04daea6aa63e13be26b48717820aa7b5889c602764cf23a" "680f62b751481cc5b5b44aeab824e5683cf13792c006aeba1c25ce2d89826426" "a44e2d1636a0114c5e407a748841f6723ed442dc3a0ed086542dc71b92a87aee" "631c52620e2953e744f2b56d102eae503017047fb43d65ce028e88ef5846ea3b" "b1acc21dcb556407306eccd73f90eb7d69664380483b18496d9c5ccc5968ab43" "dccf4a8f1aaf5f24d2ab63af1aa75fd9d535c83377f8e26380162e888be0c6a9" "c517e98fa036a0c21af481aadd2bdd6f44495be3d4ac2ce9d69201fcb2578533" "014cb63097fc7dbda3edf53eb09802237961cbb4c9e9abd705f23b86511b0a69" "1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "7fd8b914e340283c189980cd1883dbdef67080ad1a3a9cc3df864ca53bdc89cf" "bbb13492a15c3258f29c21d251da1e62f1abb8bbd492386a673dcfab474186af" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "2809bcb77ad21312897b541134981282dc455ccd7c14d74cc333b6e549b824f3" "830877f4aab227556548dc0a28bf395d0abe0e3a0ab95455731c9ea5ab5fe4e1" "0fffa9669425ff140ff2ae8568c7719705ef33b7a927a0ba7c5e2ffcfac09b75" "51ec7bfa54adf5fff5d466248ea6431097f5a18224788d0bd7eb1257a4f7b773" "d0fa4334234e97ece3d72d86e39a574f8256b4a8699a1fb5390c402892a1c024" "e47c0abe03e0484ddadf2ae57d32b0f29f0b2ddfe7ec810bd6d558765d9a6a6c" default))
+ '(delete-selection-mode nil)
  '(evil-want-Y-yank-to-eol nil)
  '(highlight-changes-colors '("#DC8CC3" "#bbb0cb"))
- '(highlight-parentheses-colors '("#93E0E3" "#F0DFAF" "#8CD0D3" "#bbb0cb" "#7F9F7F"))
+ '(highlight-parentheses-colors '("Springgreen3" "IndianRed1" "IndianRed3" "IndianRed4") nil nil "Customized with use-package highlight-parentheses")
  '(highlight-symbol-colors
    '("#67605e255590" "#4e615e515e24" "#5f8b4d004c7a" "#55b0556a5e39" "#4ce7558e4c96" "#5f01556d4cad" "#4e615e515e24"))
  '(highlight-symbol-foreground-color "#FFFFEF")
@@ -734,13 +737,14 @@ This function is called at the very end of Spacemacs initialization."
    '("#CC9393" "#DFAF8F" "#F0DFAF" "#488249" "#95d291" "#57a2a4" "#93E0E3" "#DC8CC3" "#bbb0cb"))
  '(nxml-slash-auto-complete-flag t)
  '(package-selected-packages
-   '(yaml-mode eglot dtrt-indent color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow vterm terminal-here cfrs company-lsp posframe dap-mode lsp-treemacs bui treemacs pfuture zenburn-theme writeroom-mode web-mode paradox orgit magit-svn lsp-ui helm-xref evil-nerd-commenter evil-magit dumb-jump doom-themes doom-modeline centered-cursor-mode ccls aggressive-indent ace-window ace-link counsel swiper ivy lsp-mode flycheck company helm multiple-cursors magit-popup magit transient with-editor lv alert pythonic haml-mode js2-mode all-the-icons powerline dash which-key hydra evil org-plus-contrib yasnippet-snippets yapfify xterm-color ws-butler winum web-beautify volatile-highlights vmd-mode visual-fill-column vi-tilde-fringe uuidgen use-package unfill typo treepy toc-org tagedit systemd symon string-inflection stickyfunc-enhance srefactor spinner spaceline-all-the-icons solarized-theme smeargle smart-tabs-mode smart-tab slim-mode shrink-path shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator overseer org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree nameless mwim multi-term move-text mmm-mode meson-mode markdown-toc magit-gitflow macrostep lsp-clangd lorem-ipsum log4e livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide importmagic impatient-mode ibuffer-projectile hungry-delete ht highlight-parentheses highlight-numbers highlight-indentation highlight helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag graphql grandshell-theme goto-chg google-translate google-c-style golden-ratio gnuplot gntp gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy frames-only-mode flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav eldoc-eval editorconfig dotenv-mode disaster diminish diff-hl define-word cython-mode cquery counsel-projectile counsel-css company-web company-tern company-statistics company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile afternoon-theme add-node-modules-path ace-jump-helm-line ac-ispell))
+   '(sqlite3 yaml-mode eglot dtrt-indent color-theme-sanityinc-solarized color-theme-sanityinc-tomorrow vterm terminal-here cfrs company-lsp posframe dap-mode lsp-treemacs bui treemacs pfuture zenburn-theme writeroom-mode web-mode paradox orgit magit-svn lsp-ui helm-xref evil-nerd-commenter evil-magit dumb-jump doom-themes doom-modeline centered-cursor-mode ccls aggressive-indent ace-window ace-link counsel swiper ivy lsp-mode flycheck company helm multiple-cursors magit-popup magit transient with-editor lv alert pythonic haml-mode js2-mode all-the-icons powerline dash which-key hydra evil org-plus-contrib yasnippet-snippets yapfify xterm-color ws-butler winum web-beautify volatile-highlights vmd-mode visual-fill-column vi-tilde-fringe uuidgen use-package unfill typo treepy toc-org tagedit systemd symon string-inflection stickyfunc-enhance srefactor spinner spaceline-all-the-icons solarized-theme smeargle smart-tabs-mode smart-tab slim-mode shrink-path shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode prettier-js popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator overseer org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file neotree nameless mwim multi-term move-text mmm-mode meson-mode markdown-toc magit-gitflow macrostep lsp-clangd lorem-ipsum log4e livid-mode live-py-mode link-hint json-navigator json-mode js2-refactor js-doc indent-guide importmagic impatient-mode ibuffer-projectile hungry-delete ht highlight-parentheses highlight-numbers highlight-indentation highlight helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-cscope helm-company helm-c-yasnippet helm-ag graphql grandshell-theme goto-chg google-translate google-c-style golden-ratio gnuplot gntp gitignore-templates gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy frames-only-mode flyspell-correct-helm flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav eldoc-eval editorconfig dotenv-mode disaster diminish diff-hl define-word cython-mode cquery counsel-projectile counsel-css company-web company-tern company-statistics company-c-headers company-anaconda column-enforce-mode clean-aindent-mode clang-format browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile afternoon-theme add-node-modules-path ace-jump-helm-line ac-ispell))
  '(pos-tip-background-color "#4F4F4F")
  '(pos-tip-foreground-color "#FFFFEF")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#7F9F7F" "#4F4F4F" 0.2))
  '(term-default-bg-color "#3F3F3F")
  '(term-default-fg-color "#DCDCCC")
  '(vc-annotate-background-mode nil)
+ '(warning-suppress-log-types '((use-package)))
  '(weechat-color-list
    '(unspecified "#3F3F3F" "#4F4F4F" "#9f5c5c" "#CC9393" "#488249" "#7F9F7F" "#b6a576" "#F0DFAF" "#57a2a4" "#8CD0D3" "#aa5790" "#DC8CC3" "#5dacaf" "#93E0E3" "#DCDCCC" "#6F6F6F"))
  '(xterm-color-names
@@ -752,7 +756,6 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((class color) (min-colors 89)) (:foreground "#DCDCCC" :background "#3F3F3F"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  '(highlight-parentheses-highlight ((nil (:weight ultra-bold))) t))
